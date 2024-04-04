@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Defteri</title>
+</head>
+<body>
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Defteri</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Not Defteri</h1>
+    <textarea id="notTextArea"></textarea>
+    <button onclick="kaydet()">Kaydet</button>
+    <button onclick="temizle()">Temizle</button>
+    <script>
+        function kaydet() {
+            var notIcerik = document.getElementById("notTextArea").value;
+            localStorage.setItem("not", notIcerik);
+            alert("Not başarıyla kaydedildi!");
+        }
+
+        function temizle() {
+            document.getElementById("notTextArea").value = "";
+            localStorage.removeItem("not");
+            alert("Not başarıyla temizlendi!");
+        }
+
+        window.onload = function() {
+            var kaydedilmisNot = localStorage.getItem("not");
+            if (kaydedilmisNot) {
+                document.getElementById("notTextArea").value = kaydedilmisNot;
+            }
+        }
+    </script>
+</body>
+</html>
+
+</body>
+</html>
