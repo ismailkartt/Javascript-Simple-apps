@@ -22,7 +22,7 @@
     <button onclick="temizle()">Temizle</button>
     <script>
         function kaydet() {
-            var notIcerik = document.getElementById("notTextArea").value;
+            let notIcerik = document.getElementById("notTextArea").value;
             localStorage.setItem("not", notIcerik);
             alert("Not başarıyla kaydedildi!");
         }
@@ -34,11 +34,12 @@
         }
 
         window.onload = function() {
-            var kaydedilmisNot = localStorage.getItem("not");
+            let kaydedilmisNot = localStorage.getItem("not");
             if (kaydedilmisNot) {
                 document.getElementById("notTextArea").value = kaydedilmisNot;
             }
-        }
+        } 
+
     </script>
 </body>
 </html>
