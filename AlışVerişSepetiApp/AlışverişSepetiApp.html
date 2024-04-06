@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alışveriş Sepeti Uygulaması</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .product {
+        margin-bottom: 10px;
+    }
+    button {
+        padding: 8px 16px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Alışveriş Sepeti</h2>
+    <div class="product">
+        <span>Ürün 1 - 100 TL</span>
+        <button onclick="addToCart(100)">Sepete Ekle</button>
+    </div>
+    <div class="product">
+        <span>Ürün 2 - 150 TL</span>
+        <button onclick="addToCart(150)">Sepete Ekle</button>
+    </div>
+    <div class="product">
+        <span>Ürün 3 - 200 TL</span>
+        <button onclick="addToCart(200)">Sepete Ekle</button>
+    </div>
+    <hr>
+    <h3>Sepet İçeriği</h3>
+    <ul id="cart"></ul>
+    <div id="total"></div>
+    <button onclick="clearCart()">Sepeti Boşalt</button>
+</div>
+
+<script>
+    let cart = [];
+    
+    function addToCart(price) {
+        cart.push(price);
+        renderCart();
+    }
+    
+    function renderCart() {
+        let cartList = document.getElementById('cart');
+        let total = 0;
+        cartList.innerHTML = '';
+        
+        cart.forEach(function(item, index) {
+            let listItem = document.createElement('li');
+            listItem.textContent = 'Ürün ' + (index + 1) + ' - ' + item + ' TL';
+            cartList.appendChild(listItem);
+            total += item;
+        });
+        
+        let totalElement = document.getElementById('total');
+        totalElement.textContent = 'Toplam: ' + total + ' TL';
+    }
+    
+    function clearCart() {
+        cart = [];
+        renderCart();
+    }
+</script>
+</body>
+</html>
