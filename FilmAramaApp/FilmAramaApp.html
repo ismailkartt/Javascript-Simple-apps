@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film Arama Uygulaması</title>
+</head>
+<body>
+    <h1>Film Arama Uygulaması</h1>
+    <label for="searchInput">Film Adı:</label>
+    <input type="text" id="searchInput">
+    <button onclick="searchMovies()">Ara</button>
+    <div id="movieList"></div>
+
+    <script>
+        async function searchMovies() {
+            const query = document.getElementById('searchInput').value;
+            const apiKey = 'YOUR_API_KEY'; // TMDb API anahtarını buraya ekleyin
+            const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                displayMovies(data.results);
+            } catch (error) {
+                console.error('Film araması yapılamadı:', error);
+            }
+        }
+
+        function displayMovies(movies) {
+            const movieList = document.getElementById('movieList');
+            movieList.innerHTML = '';
+
+            if (movies.length === 0) {
+                movieList.innerHTML = '<p>Film bulunamadı.</p>';
+                return;
+            }
+
+            movies.forEach(movie => {
+                const movieItem = document.createElement('div');
+                movieItem.classList.add('movie-item');
+                movieItem.innerHTML = `
+                    <h2>${movie.title}</h2>
+                    <p>Yıl: ${movie.release_date}</p>
+                    <p>Açıklama: ${movie.overview}</p>
+                `;
+                movieList.appendChild(movieItem);
+            });
+        }
+    </script>
+</body>
+</html>
