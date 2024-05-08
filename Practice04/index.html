@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript ile Menü Oluşturma</title>
+  <style>
+    /* Basit bir CSS ile menüyü stilize edebilirsiniz */
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      background-color: #f1f1f1;
+    }
+
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    a{
+        text-decoration: none;
+        color: rgb(39, 42, 131);
+    }
+
+    li:hover {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Menüyü içerecek olan div -->
+<div id="menuContainer">
+  <!-- JavaScript ile doldurulacak olan menü -->
+</div>
+
+<script>
+  // Menü elemanlarının verileri
+  const menuItems = [
+    { text: "Anasayfa", url: "#" },
+    { text: "Hakkımızda", url: "#" },
+    { text: "Hizmetler", url: "#" },
+    { text: "İletişim", url: "#" }
+  ];
+
+  // Menüyü oluşturan fonksiyon
+  function createMenu(menuItems) {
+    // Menüyü içerecek olan ul elementini oluştur
+    const ul = document.createElement("ul");
+
+    // Her bir menü öğesini dolaş
+    menuItems.forEach(function(item) {
+      // Her bir menü öğesi için bir li ve bir a elementi oluştur
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+
+      // a elementinin içeriğini ve href özelliğini ayarla
+      a.textContent = item.text;
+      a.href = item.url;
+
+      // Oluşturulan a elementini li elementine ekle
+      li.appendChild(a);
+
+      // Oluşturulan li elementini ul elementine ekle
+      ul.appendChild(li);
+    });
+
+    // Menüyü içerecek olan div içerisine oluşturulan ul elementini ekle
+    document.getElementById("menuContainer").appendChild(ul);
+  }
+
+  // Sayfa yüklendiğinde menüyü oluştur
+  window.onload = function() {
+    createMenu(menuItems);
+  };
+</script>
+
+</body>
+</html>

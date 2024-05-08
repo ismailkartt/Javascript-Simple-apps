@@ -1,0 +1,41 @@
+body{
+    background-color: bisque;
+}
+
+.container{
+    border: 3px solid purple;
+    margin: 3rem;
+    text-align: center;
+    width: 350px;
+}
+
+.container div{
+    padding: 1rem;
+}
+
+.red{
+    background-color: red;
+}
+
+.white{
+    background-color: white;
+}
+
+.blue{
+    background-color: blue;
+}
+
+.black{
+    background-color: black;
+}
+
+.green{
+    background-color: green;
+}
+
+.red, .white, .blue, .black, .green{
+    color: blueviolet;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}

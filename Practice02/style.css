@@ -1,0 +1,72 @@
+
+body{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.card{
+    padding: 30px;
+}
+
+.rightColors{
+    text-align: center;
+    height: 400px;
+    width: 300px;       
+    border: 1.5px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.wrongColors{
+    text-align: center;
+    height: 400px;
+    width: 300px;       
+    border: 1.5px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.colors{
+    border: 1.5px solid black;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 50%;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    color: rgb(58, 49, 49);
+    font-size: 1.2rem;
+}
+
+li{
+    display: inline-block;
+    padding: 20px;
+    background-color: rgb(120, 148, 53);
+    text-decoration: none;
+}
+
+.kırmızı{
+    background-color: red;
+}
+
+.beyaz{
+    background-color: white;
+}
+
+.mavi{
+    background-color: blue;
+}
+
+.siyah{
+    background-color: black;
+}
+
+.yesil{
+    background-color: green;
+}
+
+
