@@ -1,0 +1,50 @@
+body{
+    background-color: bisque;
+}
+
+.cardx{
+height: 17rem;
+width: 20%;
+margin: 4.2rem auto;
+background-color:beige;
+}
+
+.form-label{
+    font-size: 1.2rem;
+    margin-left: 10px;
+}
+
+.form-control{
+    width: 90%;
+    margin-left: 10px;
+}
+
+.btnEl{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 30px;
+}
+
+button{
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+
+#message{
+margin-top: 10px;    
+margin-left: 10px;
+font-size: 1.2rem;
+font-weight: bold;
+color: brown;
+background-color: blanchedalmond;
+padding: 6px;
+display: none;
+}

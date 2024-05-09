@@ -1,0 +1,23 @@
+body{
+    background-color:bisque;
+}
+
+.kayit{
+    border: 3px solid greenyellow;
+    background-color: aquamarine;
+    width: 50%;
+    height: 50%;
+    margin: 5rem auto;
+    padding: 2rem;
+}   
+
+
+#mesaj{
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: burlywood;
+    display: none;
+    color: purple;
+    margin-top: 1.5rem;
+    text-transform: uppercase;
+}
