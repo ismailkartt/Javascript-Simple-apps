@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="card">
+        <div class="yas">
+            <input type="text" placeholder="Yasinizi giriniz" id="yas">
+        </div>
+
+        <div class="cinsiyet">
+            <label for="erkek">Erkek</label>
+            <input type="radio" id="erkek" name="cinsiyet" checked>
+            <label for="bayan">Bayan</label>
+            <input type="radio" id="bayan" name="cinsiyet">
+        </div>
+
+        <div class="buttons">
+            <button type="button" onclick="hesapla()">Askerlik Durumu</button>
+            <button type="reset" onclick="temizle()">Temizle</button>
+        </div>
+
+        <div id="msg"></div>
+
+    </div>
+
+
+
+    <script src="js/script.js"></script>
+</body>
+</html>

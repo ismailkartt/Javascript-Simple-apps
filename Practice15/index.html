@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <input type="number" id="yas" name="yas" placeholder="yasinizi giriniz">
+
+        <input type="radio" name="cinsiyet" id="erkek" checked>
+        <label for="erkek">Erkek</label>
+
+        <input type="radio" name="cinsiyet" id="kadin" >
+        <label for="kadin">Kadin</label>
+
+        <button type="button" onclick="askerlikKontrol()">Askerlik Durumu</button>
+        <button type="reset" onclick="temizle()">Temizle</button>
+
+        <p id="mesaj"></p>
+
+    </div>
+    
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+.container{
+    padding: 1rem;
+    background-color: orange;
+    width: 50%;
+}
+
+.container input,button{
+    padding: 0.5rem;
+    margin: 0.5rem;
+    font-size: 1rem;
+}
+
+.container #mesaj{
+    color: red;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.yesil{
+    background-color: green;
+}
+
+.kirmizi{
+    background-color: red;
+}
+
+.sari{
+    background-color: yellow;
+}
+
+.invisible{
+    display: none;
+}
