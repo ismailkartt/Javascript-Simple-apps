@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Todo List</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=qeZy-9yqgdZbfenRgSFgjZdF6Vgvs1OJbSFxp_RiRe-LQ4XlARV4cwfoRp-hWRkE6_yK6AaJXlXZWbfx_EJMxLsa3oas_Bt6VR2w8_HaKrFQxP3yFGLn5lFsK4v3vHVALLwmw_4HAft4Aew-qI5Fk0NtA_FcMEhVLaXgztoBJRWHtTXAeLMP8KPzvqNsJ7ILtpFnVx4NYzbu7zZiyK7_LhS9fQ3-nux-a706KLxzI0kBoMs5MafRK2NuJia93cQODPnOeLN_n9wwAmx-_kbeQZveiiY0HSXcnqCobtiwDpZHRy4E3b9_w53KK_KDgqt2Ccui1F9gbe2MJkbqUqeF1h4ko6pZltLu9U-Wdl2qNELoMQks8P3LW3Pf8S1zfRUhQbZY1Wc5Hrk0_MRIxc9h0lTSe6ZXDyDhKBcJaLLnkdPQaL2K3DlnSNfSA5nwOnEw7T78JgNQaRCCDepCtZT-JbZ8H-2IPeB7CGmMdfkWwCO5XpVokoAFpx2BmyQ_jscFbQ8OdBl0SvD8vBwYP1b_etlhH0ZkjrW7oMt00HzxlGUoChoFx7fyxeuSmbxLVZa1t83dwVSoGq9HBQ-Uy9DIASRWuITNppnvU_lYEp6u6HbKr2023O6mMQF0A1vE-ZqJjwGsu7V34yJtwo01EBJAIsp52WAAcKOcFtKiCqXs6brY7N1UoXEcFvoOTW2i5paGvbOpcmldyffLnDxrz4vBtOqM24RVCvhsV36HSuuyCZMFKmSXXNxHfgxQvEzllbnwHFyEoYPC5__OkxlnQAecUg" charset="UTF-8"></script></head>
+<body>
+    <div class="container" style ="margin-top:20px;">
+                                     
+        <div class="card row">
+            <div class="card-header">Todo List</div>
+            <div class="card-body">
+                    <form id = "todo-form" name="form">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <input class="form-control" type="text" name="todo" id = "todo" placeholder="Bir Todo Girin">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-danger">Todo Ekleyin</button>
+                    </form>
+                
+             </div>
+         
+             <div class="card-body">
+                    <hr>
+                    <h5 class="card-title" id = "tasks-title">Todolar</h5>
+                    <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <input class="form-control" type="text" name="filter" id = "filter" placeholder="Bir Todo Arayın">
+                            </div>
+                    </div>
+
+                    <hr>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between">
+                            Todo 1
+                            <a href = "#" class ="delete-item">
+                                <i class = "fa fa-remove"></i>
+                            </a>
+
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            Todo 2
+                            <a href = "#" class ="delete-item">
+                                <i class = "fa fa-remove"></i>
+                            </a>
+    
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            Todo 3
+                            <a href = "#" class ="delete-item">
+                                <i class = "fa fa-remove"></i>
+                            </a>
+    
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            Todo 4
+                            <a href = "#" class ="delete-item">
+                                <i class = "fa fa-remove"></i>
+                            </a>
+        
+                        </li>
+                    </ul>
+                    <hr>  
+                    <a id = "clear-todos" class="btn btn-dark" href="#">Tüm Taskları Temizleyin</a>               
+                </div>
+              </div>
+        
+    </div>
+
+
+    
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+</html>
