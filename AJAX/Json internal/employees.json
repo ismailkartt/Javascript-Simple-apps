@@ -1,0 +1,17 @@
+[
+    {
+        "name" : "İsmail Kart",
+        "department" : "Bilişim",
+        "salary" : 150000
+    },
+    {
+        "name" : "Mustafa Murat Coşkun",
+        "department" : "Bilişim",
+        "salary" : 120000
+    },
+    {
+        "name" : "Serhat Say",
+        "department" : "Bilişim",
+        "salary" : 10000
+    }
+]
