@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Async</title>
+    <title>Callback</title>
 </head>
 <body>
     
@@ -15,23 +15,23 @@
 
     <script>
 
-        const sum = (a,b) => {
+    const sum = (a,b,cb) => {
             setTimeout(()=>{
                 const total = a+b;
-                return total;
-            },1)
+                cb(total);
+            },3000)
         }
-
-        /* 
-        Asekron yapılardan geri deger dondurme islemi bu sekilde olmaz
-        Cünkü her asekron kod blogu ayrı thread 'lerde calıstıgı icin javascript 
-        o kodun bitmesini beklemeden kaldıgı yerden çalışmaya devam eder.
-        Böylece asekron taraftan cevap dönse bile yakalanamaz
-        */
+        
+        const x = (total) => {
+            console.log(total)
+        }
+        
 
         console.log("Sayıları toplamı:");
-        const total = sum(15,25);
-        console.log(total);
+
+        sum(10,40,x);
+        
+        console.log("Merhaba");
 
     </script>
 
