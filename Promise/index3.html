@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Chain</title>
+</head>
+<body>
+
+    <button id="btn">Click Me</button>
+
+    <script>
+
+
+        const soz1 = () => {
+            return new Promise( (resolve) => {
+                setTimeout(()=>{
+                    resolve("Sözüm söz 1");
+                },2000)
+            })
+        }
+
+        const soz2 = () => {
+            return new Promise( (resolve) => {
+                setTimeout(()=>{
+                    resolve("Sözüm söz 2");
+                },1000)
+            })
+        }
+
+        const soz3 = () => {
+            return new Promise( (resolve) => {
+                setTimeout(()=>{
+                    resolve("Sözüm söz 3");
+                },4000)
+            })
+        }
+
+        const soz4 = () => {
+            return new Promise( (resolve) => {
+                setTimeout(()=>{
+                    resolve("Sözüm söz 4");
+                },500)
+            })
+        }
+        
+
+        document.getElementById("btn").addEventListener("click", async () => {
+            console.log("Awating...");
+
+            try{
+
+                const resp1 = await soz1();
+                console.log(res1);
+
+                const resp2 = await soz2();
+                console.log(res2);
+
+                const resp3 = await soz3();
+                console.log(res3);
+
+                const resp4 = await soz4();
+                console.log(res4); 
+
+                //Promise'lerden dönen reject durumlarını catch yakalar
+            }catch (error){
+                console.log(error)
+            }
+
+            
+
+            console.log("Hello");
+
+        })
+
+        async function test(){
+
+        }
+
+
+
+    </script>
+
+</body>
+</html>

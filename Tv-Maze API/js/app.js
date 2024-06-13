@@ -1,47 +1,48 @@
-import {searchShows} from './tv-maze-api.js';
+import { searchShows } from "./tv-maze-api.js";
 
 let timeoutSearch = null;
+const lstTvShows = document.getElementById("lstTvShows");
 
 document.getElementById("txtSearch").addEventListener("input", (e) => {
-    const query = e.target.value;
-    
-    if(timeoutSearch){
-        clearTimeout(timeoutSearch);
-    }
+  const query = e.target.value;
 
-    timeoutSearch = setTimeout(() => {
-        searchShows(query, (shows)=>{
-            createMovies(shows);
-        });
-    },500);
+  if (timeoutSearch) clearTimeout(timeoutSearch);
+  timeoutSearch = setTimeout(() => {
+    searchShows(query, (shows) => {
+      createMovies(shows);
+    });
+  }, 500);
+});
 
-    
+lstTvShows.addEventListener("click", (e) => {
+  const selectedCard = e.target.closest(".card");
+  const showId = selectedCard.dataset.show;
+  location.href = `product-details.html?id=${showId}`;
 });
 
 const createMovies = (shows) => {
-    const lstTvShows = document.getElementById("lstTvShows");
-
-    lstTvShows.innerHTML = "";
-    shows.forEach((item)=>{
-        const movieCard = createMovieCard(item);
-        lstTvShows.insertAdjacentHTML("afterbegin",movieCard);
-    })
-
-}
+  lstTvShows.innerHTML = "";
+  shows.forEach((item) => {
+    const movieCard = createMovieCard(item);
+    lstTvShows.insertAdjacentHTML("afterbegin", movieCard);
+  });
+};
 
 const createMovieCard = (item) => {
+  const { id, image, name, genres } = item.show;
 
-    const {image,name,genres} = item.show;
-
-    return `<div class="col">
-                <div class="card h-100">
-                    <img src="${image?.medium}" class="card-img-top" alt="${name}">
-                    <div class="card-body">
-                        <h5 class="card-title">${name}</h5>
-                        <p class="card-text">${genres.join("-")}</p>
-                    </div>
-                </div>     
-            </div>`;
-}
-
+  let movieImage = "img/no-image.png";
+  if (image) {
+    movieImage = image.medium;
+  }
+  return `<div class="col">
+    <div class="card h-100" style=cursor:pointer data-show="${id}">
+        <img src="${movieImage}" class="card-img-top" alt="${name}">
+        <div class="card-body">
+            <h5 class="card-title">${name}</h5>                        
+            <p class="card-text">${genres.join("-")}</p>
+        </div>
+    </div>
+</div>`;
+};
 
