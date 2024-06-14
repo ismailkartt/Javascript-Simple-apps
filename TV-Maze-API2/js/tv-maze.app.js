@@ -11,7 +11,7 @@ const getShowDetails = (showId,cb) => {
     const url = `${baseUrl}shows/${showId}`;
     fetch(url)
     .then((resp)=> resp.json())
-    .then((data) => cb(data));
+    .then((data) => cb(data))
 }
 
 

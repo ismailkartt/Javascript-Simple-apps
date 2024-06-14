@@ -1,4 +1,4 @@
-import {searchShows} from './tv-maze.app.js'; // Dosya uzantısını kontrol edin
+import {searchShows} from './tv-maze.app.js'; 
 
 let timeoutSearch = null;
 const txtSearch = document.getElementById("txtSearch");
@@ -18,6 +18,14 @@ txtSearch.addEventListener("input", (e) => {
     },500); 
 });
 
+lstTvShows.addEventListener("click", (e) => {
+    const selectedCard = e.target.closest(".card");
+    const showId = selectedCard.dataset.show;
+    location.href = `product-details.html?id=${showId}`;
+})
+
+
+
 const createMovies = (shows) => {
     lstTvShows.innerHTML = "";
     shows.forEach((item)=>{
@@ -27,7 +35,7 @@ const createMovies = (shows) => {
 };
 
 const createMovieCard = (item) => {
-    const {image, name, genres } = item.show;
+    const {id, image, name, genres } = item.show;
     let movieImage = "img/no-image.png";
 
     if(image){
@@ -35,7 +43,7 @@ const createMovieCard = (item) => {
     }
 
     return `<div class="col">
-                <div class="card h-100" style=cursor:pointer;>
+                <div class="card h-100 " style=cursor:pointer; data-show=${id}>
                     <img src="${movieImage}" class="card-img-top" alt="${name}">
                     <div class="card-body">
                         <h5 class="card-title">${name}</h5>
