@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline Edit Example</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .editable-input {
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Simple Table with Inline Edit</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Points</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td class="editable" onclick="editCell(this)">John Doe</td>
+                <td class="editable" onclick="editCell(this)">50</td>
+                <td>
+                    <button type="button" class="btn btn-primary edit-btn" onclick="editRow(this)">
+                        Edit
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td class="editable" onclick="editCell(this)">Jane Smith</td>
+                <td class="editable" onclick="editCell(this)">75</td>
+                <td>
+                    <button type="button" class="btn btn-primary edit-btn" onclick="editRow(this)">
+                        Edit
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function editCell(cell) {
+        var currentText = cell.innerText;
+        cell.innerHTML = '<input type="text" class="form-control editable-input" value="' + currentText + '" onblur="saveCell(this)">';
+        cell.querySelector('input').focus();
+    }
+
+    function saveCell(input) {
+        var newText = input.value;
+        var cell = input.parentElement;
+        cell.innerText = newText;
+    }
+
+    function editRow(button) {
+        var row = button.closest('tr');
+        var nameCell = row.getElementsByTagName('td')[1];
+        var pointsCell = row.getElementsByTagName('td')[2];
+        
+        nameCell.click();
+        pointsCell.click();
+    }
+</script>
+
+<!-- Bootstrap JS ve gerekli bağımlılıkları -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

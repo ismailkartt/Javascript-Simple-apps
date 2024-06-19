@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List2</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .edit-mode td {
+        background-color: #eaf4ff;
+      }
+    </style>
+  </head>
+  <body class="p-5">
+    <div class="container">
+      <div class="d-flex flex-row align-items-center w-100 p-3 mb-3 rounded">
+        <div class="me-3 flex-grow-1">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Username"
+            id="usernameEl"
+          />
+        </div>
+        <div class="me-3 flex-grow-1">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Point"
+            id="pointEl"
+            min="0"
+            max="100"
+          />
+        </div>
+        <button class="btn btn-warning" id="btnEl">Add</button>
+      </div>
+
+      <table class="table w-100">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Point</th>
+            <th>Edit</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="bodyData">
+          <!-- JavaScript ile satırlar buraya eklenecek -->
+        </tbody>
+        <tfoot class="d-none" id="averageRow">
+          <tr>
+            <td colspan="2">Average:</td>
+            <td id="averagePoint">0.00</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const usernameEl = document.getElementById("usernameEl");
+        const pointEl = document.getElementById("pointEl");
+        const btnEl = document.getElementById("btnEl");
+        const bodyData = document.getElementById("bodyData");
+        const averagePointEl = document.getElementById("averagePoint");
+        const averageRow = document.getElementById("averageRow");
+
+        let rowIndex = 1;
+
+        btnEl.addEventListener("click", function (event) {
+          const username = usernameEl.value.trim();
+          const point = parseFloat(pointEl.value.trim());
+
+          if (username && !isNaN(point) && point >= 0 && point <= 100) {
+            addRow(username, point);
+            clearInputs();
+            updateAveragePoint();
+            averageRow.classList.remove("d-none");
+          } else {
+            alert(
+              "Please enter a valid username and a point between 0 and 100."
+            );
+          }
+        });
+
+        function addRow(username, point) {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <th scope="row">${rowIndex}</th>
+            <td data-original="${username}">${username}</td>
+            <td data-original="${point}">${point}</td>
+            <td><button class="btn btn-sm btn-primary edit-btn">Edit</button></td>
+            <td>
+                <button class="btn btn-sm btn-success save-btn d-none">Save</button>
+                <button class="btn btn-sm btn-secondary cancel-btn d-none">Cancel</button>
+                <button class="btn btn-sm btn-danger delete-btn">Delete</button>
+            </td>
+        `;
+          bodyData.appendChild(row);
+          rowIndex++;
+        }
+
+        function clearInputs() {
+          usernameEl.value = "";
+          pointEl.value = "";
+        }
+
+        function updateAveragePoint() {
+          const points = Array.from(
+            bodyData.querySelectorAll("td:nth-child(3)")
+          ).map((td) => parseFloat(td.textContent));
+          const total = points.reduce((sum, point) => sum + point, 0);
+          const average =
+            points.length > 0 ? (total / points.length).toFixed(2) : "0.00";
+          averagePointEl.textContent = average;
+        }
+
+        bodyData.addEventListener("click", function (event) {
+          if (event.target.classList.contains("edit-btn")) {
+            const row = event.target.closest("tr");
+            row.classList.add("edit-mode");
+
+            const nameCell = row.querySelector("td:nth-child(2)");
+            const pointCell = row.querySelector("td:nth-child(3)");
+            const editBtn = row.querySelector(".edit-btn");
+            const saveBtn = row.querySelector(".save-btn");
+            const cancelBtn = row.querySelector(".cancel-btn");
+
+            const nameInput = document.createElement("input");
+            nameInput.type = "text";
+            nameInput.value = nameCell.textContent;
+            nameCell.textContent = "";
+            nameCell.appendChild(nameInput);
+
+            const pointInput = document.createElement("input");
+            pointInput.type = "number";
+            pointInput.min = 0;
+            pointInput.max = 100;
+            pointInput.value = pointCell.textContent;
+            pointCell.textContent = "";
+            pointCell.appendChild(pointInput);
+
+            editBtn.classList.add("d-none");
+            saveBtn.classList.remove("d-none");
+            cancelBtn.classList.remove("d-none");
+          }
+
+          if (event.target.classList.contains("save-btn")) {
+            const row = event.target.closest("tr");
+            row.classList.remove("edit-mode");
+
+            const nameCell = row.querySelector("td:nth-child(2)");
+            const pointCell = row.querySelector("td:nth-child(3)");
+            const editBtn = row.querySelector(".edit-btn");
+            const saveBtn = row.querySelector(".save-btn");
+            const cancelBtn = row.querySelector(".cancel-btn");
+
+            const nameInput = nameCell.querySelector("input");
+            const pointInput = pointCell.querySelector("input");
+            const pointValue = parseFloat(pointInput.value);
+
+            if (
+              nameInput.value.trim() &&
+              !isNaN(pointValue) &&
+              pointValue >= 0 &&
+              pointValue <= 100
+            ) {
+              nameCell.textContent = nameInput.value.trim();
+              pointCell.textContent = pointCell.value.trim();
+
+              nameCell.setAttribute('data-original', nameInput.value.trim());
+              pointCell.setAttribute('data-original', pointInput.value.trim());
+
+              editBtn.classList.remove("d-none");
+              saveBtn.classList.add("d-none");
+              cancelBtn.classList.add("d-none");
+              updateAveragePoint();
+            } else {
+              alert("Please enter a valid name and a point between 0 and 100.");
+            }
+          }
+
+          if(event.target.classList.contains("cancel-btn")){
+            const row = event.target.closest("tr");
+            row.classList.remove("edit-mode");
+
+            const nameCell = row.querySelector('td:nth-child(2)');
+            const pointCell = row.querySelector('td:nth-child(3)');
+            const editBtn = row.querySelector('.edit-btn');
+            const saveBtn = row.querySelector('.save-btn');
+            const cancelBtn = row.querySelector('.cancel-btn');
+            
+            const originalName = nameCell.getAttribute('data-original');
+            const originalPoint = pointCell.getAttribute('data-original');
+
+            nameCell.textContent = originalName;
+            pointCell.textContent = originalPoint;
+
+            editBtn.classList.remove('d-none');
+            saveBtn.classList.add('d-none');
+            cancelBtn.classList.add('d-none');
+          }
+          if(event.target.classList.contains("delete-btn")){
+            const row = event.target.closest("tr");
+            row.remove();
+            updateAveragePoint();
+
+            if(bodyData.children.length === 0){
+              averageRow.classList.add("d-none");
+            }
+
+          }
+
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Edit Button Example</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Simple Table with Edit Button</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Points</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>John Doe</td>
+                <td>50</td>
+                <td>
+                    <button type="button" class="btn btn-primary edit-btn" onclick="editRow(this)">
+                        Edit
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jane Smith</td>
+                <td>75</td>
+                <td>
+                    <button type="button" class="btn btn-primary edit-btn" onclick="editRow(this)">
+                        Edit
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit Row</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="points">Points</label>
+                        <input type="number" class="form-control" id="points">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="saveChanges()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var currentRow;
+
+    function editRow(button) {
+        currentRow = button.closest('tr'); // tıklanan butonun en yakın <tr> elemanını bulur
+        var cells = currentRow.getElementsByTagName('td'); // o satırdaki tüm <td> elemanlarını alır
+        var name = cells[1].innerText; // ikinci <td> elemanının (isim) iç metnini alır
+        var points = cells[2].innerText; // üçüncü <td> elemanının (puan) iç metnini alır
+
+        // Modal içindeki input alanlarını doldur
+        document.getElementById('name').value = name;
+        document.getElementById('points').value = points;
+
+        // Modalı göster
+        $('#editModal').modal('show');
+    }
+
+    function saveChanges() {
+        var name = document.getElementById('name').value;
+        var points = document.getElementById('points').value;
+
+        // Satırdaki hücreleri güncelle
+        var cells = currentRow.getElementsByTagName('td');
+        cells[1].innerText = name;
+        cells[2].innerText = points;
+
+        // Modalı kapat
+        $('#editModal').modal('hide');
+    }
+</script>
+
+<!-- Bootstrap JS ve gerekli bağımlılıkları -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Edit Button Example</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>Simple Table with Edit Button</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>John Doe</td>
+                <td>john@example.com</td>
+                <td>
+                    <button type="button" class="btn btn-primary edit-btn" onclick="editRow(this)">
+                        Edit
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jane Smith</td>
+                <td>jane@example.com</td>
+                <td>
+                    <button type="button" class="btn btn-primary edit-btn" onclick="editRow(this)">
+                        Edit
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function editRow(button) {
+        // Burada düzenleme işlemi yapılabilir
+        let row = button.closest('tr');
+        let cells = row.getElementsByTagName('td');
+        let name = cells[1].innerText;
+        let email = cells[2].innerText;
+        
+        alert("Edit Row: \nName: " + name + "\nEmail: " + email);
+        // Daha ileri düzenleme işlemleri burada yapılabilir.
+    }
+</script>
+
+<!-- Bootstrap JS ve gerekli bağımlılıkları -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
